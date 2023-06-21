@@ -1,0 +1,22 @@
+base:
+  project: HeartDiseasePrediction-project
+  random_state: 42
+  target_col: HeartDisease
+
+data_source: data_given/heart.csv
+
+load_data:
+  raw_dataset_csv: data/raw/raw_heart.csv
+
+split_data:
+  train_path: data/processed/train.csv
+  test_path: data/processed/test.csv
+  test_size: 0.2
+
+model_dir: saved_models
+
+reports:
+  scores: report/scores.json
+  roc: report/roc.json
+  prc: report/prc.json
+  auc: report/auc.json

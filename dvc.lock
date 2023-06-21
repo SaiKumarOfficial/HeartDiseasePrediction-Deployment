@@ -1,0 +1,78 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src/load_data.py --config=params.yaml
+    deps:
+    - path: data_given/heart.csv
+      hash: md5
+      md5: 2f1517b2bcbb7b5cf15335fe45b7b82e
+      size: 37980
+    - path: src/get_data.py
+      hash: md5
+      md5: c0f13d1f45d2c80c8598cbd97bf08bb4
+      size: 735
+    - path: src/load_data.py
+      hash: md5
+      md5: 0c72ab8998c72d47c190b38d021e9e6a
+      size: 608
+    outs:
+    - path: data/raw/raw_heart.csv
+      hash: md5
+      md5: 17741fd054677db317bdb4b8336a3c8a
+      size: 38337
+  split_data:
+    cmd: python src/split_data.py --config=params.yaml
+    deps:
+    - path: data/raw/raw_heart.csv
+      hash: md5
+      md5: 17741fd054677db317bdb4b8336a3c8a
+      size: 38337
+    - path: src/split_data.py
+      hash: md5
+      md5: 82c28e7c8a7564064086e944b3e69927
+      size: 1045
+    outs:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: dfa7cde384e3e2e8924b1e777ea93253
+      size: 7842
+    - path: data/processed/train.csv
+      hash: md5
+      md5: faf7b8a91b52e6c4bbd6e2365d25f327
+      size: 30693
+  train_and_evaluate:
+    cmd: python src/train_and_evaluate.py --config=params.yaml
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: dfa7cde384e3e2e8924b1e777ea93253
+      size: 7842
+    - path: data/processed/train.csv
+      hash: md5
+      md5: faf7b8a91b52e6c4bbd6e2365d25f327
+      size: 30693
+    - path: src/train_and_evaluate.py
+      hash: md5
+      md5: 106f2a8e6a0374c90a33938498236c56
+      size: 4755
+    outs:
+    - path: cm.csv
+      hash: md5
+      md5: 4095e786d41c154747bd354bfcdc0310
+      size: 944
+    - path: report/prc.json
+      hash: md5
+      md5: cf35996245a92268ad2af12e083b38cd
+      size: 289
+    - path: report/roc.json
+      hash: md5
+      md5: d70aa7883cab7e9454285849bfa3629a
+      size: 358
+    - path: report/scores.json
+      hash: md5
+      md5: b1a316e56c8845c6f5d6c179f64cdca4
+      size: 162
+    - path: saved_models/model.joblib
+      hash: md5
+      md5: e2da71f5c944f2ff46194422ea77f03c
+      size: 1465

@@ -1,0 +1,44 @@
+stages:
+  load_data:
+    cmd: python src/load_data.py --config=params.yaml
+    deps:
+    - src/get_data.py
+    - src/load_data.py
+    - data_given/heart.csv
+    outs:
+    - data/raw/raw_heart.csv
+
+  split_data:
+    cmd: python src/split_data.py --config=params.yaml
+    deps:
+    - src/split_data.py
+    - data/raw/raw_heart.csv
+    outs:
+    - data/processed/train.csv
+    - data/processed/test.csv
+  
+  train_and_evaluate:
+    cmd: python src/train_and_evaluate.py --config=params.yaml
+    deps:
+    - data/processed/train.csv
+    - data/processed/test.csv
+    - src/train_and_evaluate.py
+    metrics:
+    - report/scores.json:
+        cache: false
+
+    plots:
+
+    - report/prc.json:
+        cache: false
+        x: recall
+        y: precision
+    - report/roc.json:
+        cache: false
+        x: fpr
+        y: tpr
+    - cm.csv:
+        cache: false
+    
+    outs:
+    - saved_models/model.joblib
