@@ -53,8 +53,8 @@ stages:
       size: 23052
     - path: src/train_and_evaluate.py
       hash: md5
-      md5: 106f2a8e6a0374c90a33938498236c56
-      size: 4755
+      md5: 19adb9d7fe31185c737f703d2fe2e093
+      size: 4744
     outs:
     - path: cm.csv
       hash: md5
