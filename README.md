@@ -29,7 +29,7 @@ pip install -r requirements.txt
     ```bash
     dvc add data_given/heart.csv
     ```
-    - Define the pipeline with dvc.yaml file
+    - Define the pipeline with `dvc.yaml` file
     ```bash
     dvc repro
     ```
@@ -41,7 +41,7 @@ pip install -r requirements.txt
     ```bash
     dvc plots show cm.csv --template confusion -x chd -y Predicted
     ```
-5. Now, you can do experiments by changing some of the parameters in params.yam and rerun the dvc pipeline.To rerun it , again run the above following commands.
+5. Now, you can do experiments by changing some of the parameters in `params.yaml` and rerun the dvc pipeline.To rerun it , again run the above following commands.
 6. To see the model improvement
 ```bash
 dvc metrics diff
@@ -51,14 +51,14 @@ dvc metrics diff
 ```bash
 python savemodelToBento.py
 ```
-2. To Create a bentoml servic,go to bentoml_service directory
+2. To Create a bentoml servic,go to `bentoml_service` directory
 ```bash
 cd bentoml_service
 ```
 ```bash
 bentoml serve service:service --reload
 ```
-3. After running the above command, to send the request to bentoml, run serviceRequest.py file in another command prompt
+3. After running the above command, to send the request to bentoml, run `serviceRequest.py` file in another command prompt
 ```bash
 python serviceRequest.py
 ```
@@ -70,7 +70,7 @@ bentoml build
 ```bash
 bentoml serve <service-tag>:latest --production
 ```
-6. Again run serviceRequest.py file to send the request
+6. Again run `serviceRequest.py` file to send the request
 7. Dockerise the bento, it will automatically create one docker image
 ```bash
 bentoml containerize <service-tag>
@@ -79,4 +79,5 @@ bentoml containerize <service-tag>
 ```bash
 docker run -p 3000:3000 <docker-image-name>
 ```
-Again send the request by running serviceRequest.py file.
+Again send the request by running `serviceRequest.py` file.
+
