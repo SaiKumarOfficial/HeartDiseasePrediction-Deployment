@@ -1,5 +1,6 @@
 pandas
-sklearn
+scikit-learn
 joblib
 numpyencoder
 dvc
+bentoml
