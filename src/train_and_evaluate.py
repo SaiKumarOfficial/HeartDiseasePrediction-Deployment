@@ -2,10 +2,10 @@ import os
 import pandas as pd  
 import warnings        
 import argparse
-from get_data import read_params
+from src.get_data import read_params
 from sklearn.linear_model import LogisticRegression
 import sklearn.metrics as metrics 
-from sklearn.metrics import classification_report,confusion_matrix,roc_auc_score,plot_roc_curve,accuracy_score
+from sklearn.metrics import classification_report,confusion_matrix,roc_auc_score,accuracy_score
 from sklearn.metrics import average_precision_score
 from numpyencoder import NumpyEncoder
 import joblib 
